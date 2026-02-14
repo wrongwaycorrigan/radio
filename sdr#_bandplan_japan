@@ -1,168 +1,111 @@
-# Radio Frequency Allocation Database
-
-An XML-based frequency allocation database covering the radio spectrum from 8.3 kHz to 37 GHz, with detailed frequency ranges, modes, and color-coded classifications for radio scanning and monitoring applications.
-
-## Overview
-
-This file provides a comprehensive mapping of radio frequency allocations in XML format, designed for use with Software Defined Radio (SDR) applications, frequency scanning software, and radio monitoring tools. Each frequency range is tagged with its primary use, operating mode, step size, and a color code for visual identification.
-
-## File Format
-
-The database uses an XML structure with `RangeEntry` elements, where each entry defines:
-
-- **minFrequency/maxFrequency**: Frequency range in Hz
-- **color**: ARGB hex color code for visual display (format: AARRGGBB)
-- **mode**: Radio transmission mode (AM, FM, USB, LSB, CW, NFM, WFM, etc.)
-- **step**: Recommended tuning step in Hz
-
-### Example Entry
-
-```xml
-<RangeEntry minFrequency="3622500" maxFrequency="3622500" color="5000FFFF" mode="USB" step="10">
-  Radiofax - JMH Tokyo (Weather)
-</RangeEntry>
-```
-
-## Coverage
-
-### Frequency Bands Included
-
-- **HF (3-30 MHz)**: Amateur radio, shortwave broadcast, maritime communications, aviation
-- **VHF (30-300 MHz)**: FM broadcast, TV, amateur radio, aviation navigation
-- **UHF (300 MHz-3 GHz)**: TV broadcast, mobile communications, personal radio
-- **Microwave (3-37 GHz)**: Satellite communications, mobile networks
-
-### Special Features: Japanese Radiofax/WEFAX Frequencies
-
-The database includes comprehensive coverage of radiofax (weather fax) and WEFAX stations operating in and around Japan:
-
-#### JMH Tokyo (Japan Meteorological Agency)
-Weather maps and forecasts from the Japan Meteorological Agency:
-- 3622.5 kHz
-- 7795 kHz  
-- 13988.5 kHz
-
-#### JFX Kagoshima (Fisheries)
-Fishing industry weather and sea condition faxes:
-- 4274 kHz
-- 8658 kHz
-- 13074 kHz
-
-#### JJC Kyodo News
-News agency radiofax service with navigational warnings:
-- 4316 kHz
-- 8467.5 kHz
-- 12745.5 kHz
-- **16971 kHz** (primary active frequency)
-- 17069.6 kHz
-- 22542 kHz
-
-#### 9VF Singapore
-Kyodo News repeater station:
-- 16035 kHz
-- 17430 kHz
-
-#### Shared Fisheries Frequencies
-Used by multiple Japanese fisheries stations (JFX/JFC/JFW):
-- 6414.5 kHz
-- 16907.5 kHz
-- 22559.6 kHz
-
-All radiofax entries are color-coded in **cyan** (5000FFFF) and use **USB mode** for reception.
-
-## Service Categories
-
-The database organizes frequencies into major service categories:
-
-- **Amateur Radio**: Licensed ham radio bands (630m through 6m)
-- **Broadcasting**: AM radio, FM radio, shortwave, TV
-- **Maritime**: Ship stations, coastal telegraph, distress frequencies
-- **Aviation**: Navigation aids, mobile communications
-- **Radiofax/WEFAX**: Weather and news facsimile transmissions
-- **Military/Government**: Navigation, time signals
-- **Commercial**: Mobile networks, satellite communications
-
-## Usage
-
-### Compatible Software
-
-This XML format is compatible with many SDR and scanning applications, including:
-
-- SDR# (SDRSharp)
-- HDSDR
-- SDR-Console
-- Unitrunker
-- Various spectrum analyzer tools
-
-### Importing
-
-Most SDR applications support importing frequency databases in XML format. Check your software's documentation for the specific import procedure, typically found under:
-- File → Import Frequency Database
-- Settings → Frequency Manager → Import
-- Tools → Band Plan → Load
-
-### Customization
-
-You can edit this file to:
-- Add local repeaters or frequencies of interest
-- Modify color schemes for your preference
-- Adjust step sizes for your region
-- Add notes or additional metadata
-
-## Color Coding
-
-Common color schemes used in this database:
-
-- **Red (40FF0000)**: Amateur radio bands
-- **Blue (505D88FF)**: Aviation services
-- **Gray (55008080)**: Maritime/coastal services
-- **Green (4000FF9A)**: FM broadcast
-- **Cyan (5000FFFF)**: Radiofax/WEFAX stations
-- **Yellow (50FFE55C)**: TV broadcast
-- **Purple (44FF00FF)**: Time signals
-
-## Transmission Modes
-
-- **AM**: Amplitude Modulation (broadcast, aviation)
-- **FM/WFM**: Frequency Modulation (broadcast, wide-band)
-- **NFM**: Narrowband FM (communications)
-- **USB/LSB**: Upper/Lower Sideband (HF communications)
-- **CW**: Continuous Wave (Morse code)
-
-## Regional Notes
-
-This database reflects frequency allocations with particular focus on:
-- Japan and Asia-Pacific region
-- ITU Region 3 allocations
-- International maritime and aviation bands
-
-Some frequencies may vary by country or region. Always check local regulations before transmitting.
-
-## Contributing
-
-Contributions are welcome! If you notice:
-- Outdated frequency allocations
-- Missing services in your region
-- Inactive radiofax stations
-- New stations or services
-
-Please submit updates with sources for verification.
-
-## License
-
-This frequency allocation database is provided for informational and educational purposes. Frequency allocations are based on ITU regulations and publicly available sources.
-
-## Disclaimer
-
-This database is for monitoring and receiving purposes only. Always comply with local regulations regarding radio transmission and reception. Some frequencies may require licenses to transmit or may be restricted for reception in certain jurisdictions.
-
-## Resources
-
-- [ITU Radio Regulations](https://www.itu.int/pub/R-REG-RR)
-- [Japan Ministry of Internal Affairs and Communications](https://www.soumu.go.jp/english/)
-- [Radiofax Schedules](http://www.hffax.de/)
-- [Tokyo Volmet (Aviation Weather)](https://www.tokyo-ac.jp/)
-
----
-
-**Last Updated**: February 2026
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfRangeEntry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <RangeEntry minFrequency="8300" maxFrequency="14000" color="5500FF7F" mode="CW" step="1">Radio Navigation</RangeEntry>
+  <RangeEntry minFrequency="14000" maxFrequency="19950" color="55008080" mode="CW" step="1">Coastal Telegraph</RangeEntry>
+  <RangeEntry minFrequency="19950" maxFrequency="20250" color="44FF00FF" mode="AM" step="1">Standard Frequency Time Signal</RangeEntry>
+  <RangeEntry minFrequency="20250" maxFrequency="70000" color="55008080" mode="USB" step="10">Coastal Telegraph</RangeEntry>
+  <RangeEntry minFrequency="70000" maxFrequency="160000" color="5500FF7F" mode="CW" step="1">Radio Navigation</RangeEntry>
+  <RangeEntry minFrequency="160000" maxFrequency="285000" color="505D88FF" mode="USB" step="10">Aviation Radio Navigation</RangeEntry>
+  <RangeEntry minFrequency="285000" maxFrequency="325000" color="505D88FF" mode="CW" step="1">Aviation Maritime Radiobeacon</RangeEntry>
+  <RangeEntry minFrequency="325000" maxFrequency="472000" color="505D88FF" mode="CW" step="1">Aviation Radio Navigation</RangeEntry>
+  <RangeEntry minFrequency="472000" maxFrequency="479000" color="40FF0000" mode="CW" step="10">Amateur (630m)</RangeEntry>
+  <RangeEntry minFrequency="479000" maxFrequency="505000" color="50FF0091" mode="USB" step="10">International Distress Safety Call</RangeEntry>
+  <RangeEntry minFrequency="505000" maxFrequency="526500" color="55008080" mode="USB" step="10">Maritime Telegraph</RangeEntry>
+  <RangeEntry minFrequency="526500" maxFrequency="1606500" color="33FF0000" mode="AM" step="10">Standard Broadcast (AM Radio)</RangeEntry>
+  <RangeEntry minFrequency="1606500" maxFrequency="1800000" color="5500FF7F" mode="USB" step="10">Radiobuoy</RangeEntry>
+  <RangeEntry minFrequency="1800000" maxFrequency="1825000" color="40FF0000" mode="CW" step="10">Amateur Station (160m)|</RangeEntry>
+  <RangeEntry minFrequency="1825000" maxFrequency="2000000" color="5504B704" mode="LSB" step="10">Radiobuoy Control LORAN</RangeEntry>
+  <RangeEntry minFrequency="2000000" maxFrequency="2065000" color="40FF0077" mode="USB" step="10">Radiobuoy</RangeEntry>
+  <RangeEntry minFrequency="2065000" maxFrequency="2107000" color="55008080" mode="USB" step="10">Distress Call</RangeEntry>
+  <RangeEntry minFrequency="2173500" maxFrequency="2190500" color="50FF0091" mode="USB" step="10">International Distress Search and Rescue</RangeEntry>
+  <RangeEntry minFrequency="2194000" maxFrequency="2495000" color="40FF0077" mode="USB" step="10">Road Management</RangeEntry>
+  <RangeEntry minFrequency="2495000" maxFrequency="2505000" color="44FF00FF" mode="AM" step="10">Standard Frequency Time Signal</RangeEntry>
+  <RangeEntry minFrequency="2505000" maxFrequency="2850000" color="40FF0077" mode="AM" step="10">Ship Station Telephone</RangeEntry>
+  <RangeEntry minFrequency="2850000" maxFrequency="3025000" color="505D88FF" mode="USB" step="10">Aviation Mobile R</RangeEntry>
+  <RangeEntry minFrequency="3025000" maxFrequency="3155000" color="505D88FF" mode="USB" step="10">Aviation Mobile OR</RangeEntry>
+  <RangeEntry minFrequency="3400000" maxFrequency="3500000" color="505D88FF" mode="LSB" step="10">Aviation Mobile R</RangeEntry>
+  <RangeEntry minFrequency="3500000" maxFrequency="3550000" color="40FF0000" mode="LSB" step="10">Amateur Station (80m)|</RangeEntry>
+  <RangeEntry minFrequency="3550000" maxFrequency="3622500" color="40FF0077" mode="LSB" step="10">Experimental Station</RangeEntry>
+  <RangeEntry minFrequency="3622500" maxFrequency="3622500" color="5000FFFF" mode="USB" step="10">Radiofax - JMH Tokyo (Weather)</RangeEntry>
+  <RangeEntry minFrequency="3622500" maxFrequency="3790000" color="40FF0077" mode="LSB" step="10">Experimental Station</RangeEntry>
+  <RangeEntry minFrequency="3790000" maxFrequency="3800000" color="40FF0000" mode="LSB" step="10">Amateur Station</RangeEntry>
+  <RangeEntry minFrequency="3900000" maxFrequency="3950000" color="505D63FF" mode="USB" step="10">Shortwave Broadcast (75m)</RangeEntry>
+  <RangeEntry minFrequency="3995000" maxFrequency="4005000" color="44FF00FF" mode="USB" step="10">Standard Frequency Time Signal</RangeEntry>
+  <RangeEntry minFrequency="4005000" maxFrequency="4063000" color="55008080" mode="USB" step="10">Ship Station Telephone</RangeEntry>
+  <RangeEntry minFrequency="4063000" maxFrequency="4065000" color="55008080" mode="USB" step="10">Oceanographic Data</RangeEntry>
+  <RangeEntry minFrequency="4065000" maxFrequency="4146000" color="55008080" mode="USB" step="10">Ship Station Duplex Telephone</RangeEntry>
+  <RangeEntry minFrequency="4146000" maxFrequency="4152000" color="55008080" mode="USB" step="10">Ship Station Simplex Telephone</RangeEntry>
+  <RangeEntry minFrequency="4152000" maxFrequency="4172000" color="55008080" mode="USB" step="10">Ship Station Wideband Telegraph Fax</RangeEntry>
+  <RangeEntry minFrequency="4172000" maxFrequency="4181750" color="55008080" mode="USB" step="10">Ship Station Narrowband</RangeEntry>
+  <RangeEntry minFrequency="4186750" maxFrequency="4202250" color="55008080" mode="CW" step="10">Ship Station A1A Morse Code Communication</RangeEntry>
+  <RangeEntry minFrequency="4274000" maxFrequency="4274000" color="5000FFFF" mode="USB" step="10">Radiofax - JFX Kagoshima (Fisheries)</RangeEntry>
+  <RangeEntry minFrequency="4316000" maxFrequency="4316000" color="5000FFFF" mode="USB" step="10">Radiofax - JJC Kyodo News</RangeEntry>
+  <RangeEntry minFrequency="4438000" maxFrequency="4488000" color="5504B704" mode="USB" step="10">Radiolocation</RangeEntry>
+  <RangeEntry minFrequency="4488000" maxFrequency="4650000" color="40FF0077" mode="USB" step="10">Calling Response</RangeEntry>
+  <RangeEntry minFrequency="4650000" maxFrequency="4850000" color="505D88FF" mode="RAW" step="1000">Aviation Mobile R</RangeEntry>
+  <RangeEntry minFrequency="4995000" maxFrequency="5005000" color="44FF00FF" mode="AM" step="10">Standard Frequency Time Signal</RangeEntry>
+  <RangeEntry minFrequency="5480000" maxFrequency="5730000" color="505D88FF" mode="USB" step="10">Search Rescue</RangeEntry>
+  <RangeEntry minFrequency="5900000" maxFrequency="5950000" color="505D63FF" mode="AM" step="10">Broadcast (49m)</RangeEntry>
+  <RangeEntry minFrequency="5950000" maxFrequency="6200000" color="505D63FF" mode="USB" step="10">Shortwave Broadcast (49m)</RangeEntry>
+  <RangeEntry minFrequency="6414500" maxFrequency="6414500" color="5000FFFF" mode="USB" step="10">Radiofax - JFX/JFC/JFW Fisheries (shared)</RangeEntry>
+  <RangeEntry minFrequency="7000000" maxFrequency="7100000" color="40FF0000" mode="CW" step="10">Amateur Station (40m)|</RangeEntry>
+  <RangeEntry minFrequency="7100000" maxFrequency="7200000" color="40FF0000" mode="LSB" step="10">Amateur Station</RangeEntry>
+  <RangeEntry minFrequency="7200000" maxFrequency="7450000" color="505D63FF" mode="AM" step="10">Shortwave Broadcast (41m)</RangeEntry>
+  <RangeEntry minFrequency="7795000" maxFrequency="7795000" color="5000FFFF" mode="USB" step="10">Radiofax - JMH2 Tokyo (Weather)</RangeEntry>
+  <RangeEntry minFrequency="7995000" maxFrequency="8005000" color="44FF00FF" mode="AM" step="10">Standard Frequency Time Signal</RangeEntry>
+  <RangeEntry minFrequency="8467500" maxFrequency="8467500" color="5000FFFF" mode="USB" step="10">Radiofax - JJC Kyodo News</RangeEntry>
+  <RangeEntry minFrequency="8658000" maxFrequency="8658000" color="5000FFFF" mode="USB" step="10">Radiofax - JFX Kagoshima (Fisheries)</RangeEntry>
+  <RangeEntry minFrequency="9400000" maxFrequency="9500000" color="505D63FF" mode="AM" step="10">Broadcast (31m)</RangeEntry>
+  <RangeEntry minFrequency="9500000" maxFrequency="9900000" color="505D63FF" mode="AM" step="10">Shortwave Broadcast (31m)</RangeEntry>
+  <RangeEntry minFrequency="9995000" maxFrequency="10005000" color="44FF00FF" mode="USB" step="100">Standard Frequency Time Signal</RangeEntry>
+  <RangeEntry minFrequency="10100000" maxFrequency="10150000" color="40FF0000" mode="USB" step="10">Amateur Station (30m)</RangeEntry>
+  <RangeEntry minFrequency="10150000" maxFrequency="11600000" color="505D88FF" mode="USB" step="100">Aviation Mobile</RangeEntry>
+  <RangeEntry minFrequency="11600000" maxFrequency="11650000" color="505D63FF" mode="AM" step="100">Broadcast (25m)</RangeEntry>
+  <RangeEntry minFrequency="11650000" maxFrequency="12050000" color="505D63FF" mode="AM" step="100">Shortwave Broadcast (25m)</RangeEntry>
+  <RangeEntry minFrequency="12050000" maxFrequency="12100000" color="505D63FF" mode="AM" step="100">Broadcast</RangeEntry>
+  <RangeEntry minFrequency="12745500" maxFrequency="12745500" color="5000FFFF" mode="USB" step="10">Radiofax - JJC Kyodo News</RangeEntry>
+  <RangeEntry minFrequency="13074000" maxFrequency="13074000" color="5000FFFF" mode="USB" step="10">Radiofax - JFX Kagoshima (Fisheries)</RangeEntry>
+  <RangeEntry minFrequency="13260000" maxFrequency="13360000" color="505D88FF" mode="USB" step="100">Aviation Mobile</RangeEntry>
+  <RangeEntry minFrequency="13360000" maxFrequency="13410000" color="40FFFF00" mode="AM" step="100">Radio Astronomy</RangeEntry>
+  <RangeEntry minFrequency="13570000" maxFrequency="13600000" color="505D63FF" mode="AM" step="100">Broadcast (22m)</RangeEntry>
+  <RangeEntry minFrequency="13600000" maxFrequency="13800000" color="505D63FF" mode="AM" step="100">Shortwave Broadcast (22m)</RangeEntry>
+  <RangeEntry minFrequency="13800000" maxFrequency="13870000" color="505D63FF" mode="AM" step="100">Broadcast</RangeEntry>
+  <RangeEntry minFrequency="13988500" maxFrequency="13988500" color="5000FFFF" mode="USB" step="10">Radiofax - JMH4 Tokyo (Weather)</RangeEntry>
+  <RangeEntry minFrequency="14000000" maxFrequency="14350000" color="40FF0000" mode="USB" step="10">Amateur Station (20m)</RangeEntry>
+  <RangeEntry minFrequency="15010000" maxFrequency="15100000" color="505D88FF" mode="USB" step="100">Aviation Mobile</RangeEntry>
+  <RangeEntry minFrequency="15100000" maxFrequency="15600000" color="505D63FF" mode="AM" step="100">Shortwave Broadcast (19m)</RangeEntry>
+  <RangeEntry minFrequency="15600000" maxFrequency="15800000" color="505D63FF" mode="AM" step="100">Shortwave Broadcast</RangeEntry>
+  <RangeEntry minFrequency="15800000" maxFrequency="15995000" color="505D63FF" mode="AM" step="100">Shortwave Broadcast</RangeEntry>
+  <RangeEntry minFrequency="15995000" maxFrequency="16005000" color="44FF00FF" mode="AM" step="100">Standard Frequency Time Signal</RangeEntry>
+  <RangeEntry minFrequency="16035000" maxFrequency="16035000" color="5000FFFF" mode="USB" step="10">Radiofax - 9VF Singapore (Kyodo repeater)</RangeEntry>
+  <RangeEntry minFrequency="16907500" maxFrequency="16907500" color="5000FFFF" mode="USB" step="10">Radiofax - JFX/JFC/JFW Fisheries (shared)</RangeEntry>
+  <RangeEntry minFrequency="16971000" maxFrequency="16971000" color="5000FFFF" mode="USB" step="10">Radiofax - JJC Kyodo News (primary active)</RangeEntry>
+  <RangeEntry minFrequency="17069600" maxFrequency="17069600" color="5000FFFF" mode="USB" step="10">Radiofax - JJC Kyodo News</RangeEntry>
+  <RangeEntry minFrequency="17430000" maxFrequency="17430000" color="5000FFFF" mode="USB" step="10">Radiofax - 9VF Singapore (Kyodo repeater)</RangeEntry>
+  <RangeEntry minFrequency="18900000" maxFrequency="19020000" color="505D63FF" mode="AM" step="100">Broadcast (15m)</RangeEntry>
+  <RangeEntry minFrequency="21000000" maxFrequency="21450000" color="40FF0000" mode="USB" step="10">Amateur Station (15m)</RangeEntry>
+  <RangeEntry minFrequency="21450000" maxFrequency="21850000" color="505D63FF" mode="AM" step="100">Shortwave Broadcast (13m)</RangeEntry>
+  <RangeEntry minFrequency="22542000" maxFrequency="22542000" color="5000FFFF" mode="USB" step="10">Radiofax - JJC Kyodo News</RangeEntry>
+  <RangeEntry minFrequency="22559600" maxFrequency="22559600" color="5000FFFF" mode="USB" step="10">Radiofax - JFX/JFC/JFW Fisheries (shared)</RangeEntry>
+  <RangeEntry minFrequency="24890000" maxFrequency="24990000" color="40FF0000" mode="USB" step="10">Amateur Station (12m)</RangeEntry>
+  <RangeEntry minFrequency="25670000" maxFrequency="26100000" color="505D63FF" mode="AM" step="100">Shortwave Broadcast (11m)</RangeEntry>
+  <RangeEntry minFrequency="28000000" maxFrequency="29700000" color="40FF0000" mode="USB" step="10">Amateur Station (10m)</RangeEntry>
+  <RangeEntry minFrequency="50000000" maxFrequency="54000000" color="40FF0000" mode="USB" step="10">Amateur Station (6m)</RangeEntry>
+  <RangeEntry minFrequency="54000000" maxFrequency="72000000" color="50FFE55C" mode="WFM" step="1000">TV Broadcast</RangeEntry>
+  <RangeEntry minFrequency="72000000" maxFrequency="74800000" color="5580C0C0" mode="WFM" step="100">Flood Warning</RangeEntry>
+  <RangeEntry minFrequency="76000000" maxFrequency="88000000" color="50FFE55C" mode="WFM" step="100">TV Broadcast</RangeEntry>
+  <RangeEntry minFrequency="88000000" maxFrequency="100000000" color="4000FF9A" mode="WFM" step="100">FM Broadcast</RangeEntry>
+  <RangeEntry minFrequency="100000000" maxFrequency="108000000" color="4000FF9A" mode="WFM" step="100">FM Broadcast</RangeEntry>
+  <RangeEntry minFrequency="108000000" maxFrequency="117975000" color="505D88FF" mode="AM" step="100">ILS Localizer VOR</RangeEntry>
+  <RangeEntry minFrequency="144000000" maxFrequency="146000000" color="40FF0000" mode="LSB" step="10">Amateur Station (2m)</RangeEntry>
+  <RangeEntry minFrequency="146000000" maxFrequency="148000000" color="40FF0077" mode="NFM" step="100">General Communication</RangeEntry>
+  <RangeEntry minFrequency="162037500" maxFrequency="174000000" color="40FF0077" mode="NFM" step="100">Low Power Device</RangeEntry>
+  <RangeEntry minFrequency="174000000" maxFrequency="216000000" color="50FFE55C" mode="USB" step="10">TV Broadcast</RangeEntry>
+  <RangeEntry minFrequency="216000000" maxFrequency="230000000" color="40FF0077" mode="NFM" step="1000">Low Power Device</RangeEntry>
+  <RangeEntry minFrequency="273000000" maxFrequency="322000000" color="40FF0077" mode="NFM" step="1000">Low Power Device</RangeEntry>
+  <RangeEntry minFrequency="420000000" maxFrequency="470000000" color="40FF0077" mode="NFM" step="1000">Personal Radio</RangeEntry>
+  <RangeEntry minFrequency="698000000" maxFrequency="806000000" color="5580C0C0" mode="NFM" step="1000">Public Network</RangeEntry>
+  <RangeEntry minFrequency="942000000" maxFrequency="960000000" color="40FF0077" mode="NFM" step="1000">Low Power Device</RangeEntry>
+  <RangeEntry minFrequency="15250000000" maxFrequency="16605000000" color="40FF0077" mode="NFM" step="10000">Satellite Mobile Communication</RangeEntry>
+  <RangeEntry minFrequency="25000000000" maxFrequency="37000000000" color="50FFCE83" mode="NFM" step="10000">Mobile Communication</RangeEntry>
+</ArrayOfRangeEntry>
