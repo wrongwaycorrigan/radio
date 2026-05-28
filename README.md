@@ -1,4 +1,4 @@
-# Radio Frequency Allocation Database
+# Japan Radio Frequency Allocation Database
 
 An XML-based frequency allocation database covering the radio spectrum from 8.3 kHz to 37 GHz, with detailed frequency ranges, modes, and color-coded classifications for radio scanning and monitoring applications.
 
