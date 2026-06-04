@@ -2,6 +2,8 @@
 
 An XML-based frequency allocation database covering the radio spectrum from 8.3 kHz to 37 GHz, with detailed frequency ranges, modes, and color-coded classifications for radio scanning and monitoring applications.
 
+Also includes a CHIRP database file for 70cm repeaters in the Tokyo region. 
+
 ## Overview
 
 This file provides a comprehensive mapping of radio frequency allocations in XML format, designed for use with Software Defined Radio (SDR) applications, frequency scanning software, and radio monitoring tools. Each frequency range is tagged with its primary use, operating mode, step size, and a color code for visual identification.
